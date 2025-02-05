@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
-const HomeTitle = ({ name }) => {
+const HomeTitle = () => {
+  // props로 name을 받아와서 이름을 보여줘야 함.
+
   return (
     <Wrapper>
-      <div className="title">안녕하세요 {name}님!</div>
+      <div className="title">안녕하세요 {}님!</div>
       <div className="title">오늘도 함께 가볼까요?</div>
     </Wrapper>
   );
