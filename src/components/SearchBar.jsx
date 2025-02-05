@@ -63,6 +63,8 @@ const ClearButton = styled.button`
   justify-content: center;
   transition: opacity 0.2s ease-in-out;
   left: 333px;
+  width: 41px;
+  height: 41px;
 `;
 
 const SearchButton = styled.button`
