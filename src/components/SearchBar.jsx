@@ -6,7 +6,7 @@ import CloseIcon from "../icons/close.svg";
 const Container = styled.div`
   display: fixed;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   padding-bottom: 12px;
   padding-top: 56px; /* iOS 상태바 여백 */
@@ -69,6 +69,7 @@ const ClearButton = styled.button`
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s ease-in-out;
+  color: #8B8B8B;
   left: 333px;
   width: 41px;
   height: 41px;
