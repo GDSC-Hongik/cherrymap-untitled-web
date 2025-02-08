@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
 import CloseIcon from "../icons/close.svg";
+import TransportToggle from "./TransportToggle";
 
 const Container = styled.div`
   display: fixed;
@@ -11,8 +13,7 @@ const Container = styled.div`
   padding-bottom: 12px;
   padding-top: 14px;
   background: white;
-  position: sticky;
-  height: 113px;
+  height: ${({ showToggle }) => (showToggle ? "159px" : "113px")};
   top: 0;
   left: 0;
   right: 0;
@@ -25,6 +26,7 @@ const Container = styled.div`
   border-radius: 0px 0px 15px 15px;
   flex-wrap: wrap;
   box-sizing: border-box;
+  gap: 5px;
 `;
 
 const SearchRow = styled.div`
@@ -34,7 +36,6 @@ const SearchRow = styled.div`
   width: 100%;
   max-width: 356px;
   gap: 5px;
-  margin-top: 5px;
 `;
 
 const InputWrapper = styled.div`
@@ -92,14 +93,24 @@ const SearchButton = styled.button`
 const SearchBar = ({ onSearch }) => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [showToggle, setShowToggle] = useState(false);
+  const navigate = useNavigate();
 
-  const handleClear = () => {
+  const handleClose = () => {
     setStart("");
     setEnd("");
+    setShowToggle(false);
+    navigate(-1);
+  };
+
+  const handleSearch = () => {
+    if (start && end) {
+      setShowToggle(true);
+    }
   };
 
   return (
-    <Container>
+    <Container showToggle={showToggle}>
       <SearchRow>
         <InputWrapper>
           <Input 
@@ -109,7 +120,7 @@ const SearchBar = ({ onSearch }) => {
             onChange={(e) => setStart(e.target.value)} 
           />
         </InputWrapper>
-        <ClearButton visible={start.length > 0 || end.length > 0} onClick={handleClear}>
+        <ClearButton visible={start.length > 0 || end.length > 0} onClick={handleClose}>
           <img src={CloseIcon} alt="Clear" />
         </ClearButton>
       </SearchRow>
@@ -125,8 +136,9 @@ const SearchBar = ({ onSearch }) => {
           />
         </InputWrapper>
 
-        <SearchButton onClick={() => onSearch(start, end)}>길찾기</SearchButton>
+        <SearchButton onClick={handleSearch}>길찾기</SearchButton>
       </SearchRow>
+      {showToggle && <TransportToggle />}
     </Container>
   );
 };
