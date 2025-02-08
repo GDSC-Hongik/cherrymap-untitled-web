@@ -9,10 +9,10 @@ const Container = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding-bottom: 12px;
-  padding-top: 56px; /* iOS 상태바 여백 */
+  padding-top: 14px;
   background: white;
   position: sticky;
-  height: 157px;
+  height: 113px;
   top: 0;
   left: 0;
   right: 0;
