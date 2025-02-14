@@ -3,17 +3,17 @@ import { useState } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import CloseIcon from "../icons/close.svg";
+import StartIcon from "../icons/start.svg";
+import DestinationIcon from "../icons/destination.svg";
 import TransportToggle from "./TransportToggle";
 
 const Container = styled.div`
-  display: fixed;
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding-bottom: 12px;
-  padding-top: 14px;
+  align-items: center;
+  padding-top: 4px;
   background: white;
-  height: ${({ showToggle }) => (showToggle ? "159px" : "113px")};
+  height: ${({ showToggle }) => (showToggle ? "159px" : "109px")};
   top: 0;
   left: 0;
   right: 0;
@@ -26,57 +26,65 @@ const Container = styled.div`
   border-radius: 0px 0px 15px 15px;
   flex-wrap: wrap;
   box-sizing: border-box;
-  gap: 5px;
-`;
-
-const SearchRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  max-width: 356px;
-  gap: 5px;
 `;
 
 const InputWrapper = styled.div`
-  flex: 1;
   display: flex;
-  align-items: center;
-  background: #F1F1F1;
-  border: 1px solid #E6E6E6;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #F8F8F8;
   border-radius: 6px;
-  height: 41px;
-  width: 310px;
+  height: 98px;
+  width: 100%;
+  max-width: 357px;
+  padding: 3px 0;
   position: relative;
   box-sizing: border-box;
 `;
 
+const SearchRow = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+`;
+
+const Icon = styled.img`
+  width: 12px;
+  margin-left: 14px;
+  margin-right: 13px;
+`;
+
 const Input = styled.input`
   flex: 1;
+  width: 241px;
+  max-width: 100%;
   border: none;
   background: transparent;
-  font-size: 16px;
+  font-size: 17px;
   outline: none;
-  padding-left: 15px;
-  color: #818181;
+  color: #A5A5A5;
   align-items: center;
-  color: ${({ hasText }) => (hasText ? "#818181" : "#000000")};
+  color: ${({ hasText }) => (hasText ? "#A5A5A5" : "#000000")};
 `;
 
 const ClearButton = styled.button`
+  position: relative;
   background: transparent;
   border: none;
   cursor: pointer;
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s ease-in-out;
-  color: #8B8B8B;
-  left: 333px;
+  color: #666666;
   width: 41px;
   height: 41px;
+  right: 13px;
 `;
 
 const SearchButton = styled.button`
+  position: relative;
   padding: 2px;
   background: #ff2655;
   color: white;
@@ -87,7 +95,17 @@ const SearchButton = styled.button`
   border-radius: 6px;
   cursor: pointer;
   width: 41px;
-  height: 41px;
+  height: 38px;
+  right: 13px;
+  box-sizing: border-box;
+`;
+
+const Divider = styled.div`
+  position: relative;
+  width: 241px;
+  height: 0px;
+  left: 39px;
+  border: 1px solid #E4E4E4;
 `;
 
 const SearchBar = ({ onSearch }) => {
@@ -111,33 +129,36 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <Container showToggle={showToggle}>
-      <SearchRow>
-        <InputWrapper>
-          <Input 
+      <InputWrapper>
+        <SearchRow>
+          <Icon src={StartIcon} alt="출발지" />
+          <Input
             type="text" 
             placeholder="출발지를 입력해주세요" 
             value={start} 
-            onChange={(e) => setStart(e.target.value)} 
-          />
-        </InputWrapper>
-        <ClearButton visible={start.length > 0 || end.length > 0} onClick={handleClose}>
+           onChange={(e) => setStart(e.target.value)}
+           />
+          <ClearButton visible={start.length > 0 || end.length > 0} onClick={handleClose}>
           <img src={CloseIcon} alt="Clear" />
-        </ClearButton>
-      </SearchRow>
-
-
-      <SearchRow>
-        <InputWrapper>
+          </ClearButton>
+        </SearchRow>
+        
+        <Divider />
+        
+        <SearchRow>
+          <Icon src={DestinationIcon} alt="도착지" />
           <Input 
             type="text" 
             placeholder="도착지를 입력해주세요" 
             value={end} 
             onChange={(e) => setEnd(e.target.value)} 
           />
-        </InputWrapper>
+          <SearchButton onClick={handleSearch}>길찾기</SearchButton>
+          </SearchRow>
+          
+      </InputWrapper>
 
-        <SearchButton onClick={handleSearch}>길찾기</SearchButton>
-      </SearchRow>
+
       {showToggle && <TransportToggle />}
     </Container>
   );

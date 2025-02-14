@@ -12,7 +12,7 @@ const ToggleContainer = styled.div`
   max-width: 358px;
   height: 44px;
   padding: 2px;
-  margin-top: 4px;
+  margin-top: 8px;
   margin-bottom: 5px;
   box-sizing: border-box;
 `;
