@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SearchBar from "./components/SearchBar"; // 🚀 SearchBar import
+import SearchBar from "./components/SearchBar/SearchBar"; // 🚀 SearchBar import
 
 function App() {
   return (

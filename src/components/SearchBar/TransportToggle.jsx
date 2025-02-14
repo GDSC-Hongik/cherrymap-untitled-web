@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import styled from "@emotion/styled";
-import WalkIcon from "../icons/walk-icon.svg";
-import BusIcon from "../icons/bus-icon.svg";
+import WalkIcon from "../../icons/walk-icon.svg";
+import BusIcon from "../../icons/bus-icon.svg";
 
 const ToggleContainer = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const ToggleContainer = styled.div`
   max-width: 358px;
   height: 44px;
   padding: 2px;
-  margin-top: 8px;
+  margin-top: 4px;
   margin-bottom: 5px;
   box-sizing: border-box;
 `;
@@ -35,9 +35,7 @@ const ToggleButton = styled.button`
   }
 `;
 
-const TransportToggle = () => {
-  const [selectedTransport, setSelectedTransport] = useState("walk"); // 초기값: 도보
-
+const TransportToggle = ({ selectedTransport, onTransportChange }) => {
   const transportOptions = {
     walk: { label: "도보", icon: WalkIcon, time: "40분" },
     bus: { label: "대중교통", icon: BusIcon, time: "28분" }
@@ -49,7 +47,7 @@ const TransportToggle = () => {
         <ToggleButton
           key={key}
           active={selectedTransport === key}
-          onClick={() => setSelectedTransport(key)}
+          onClick={() => onTransportChange(key)}
         >
           {selectedTransport === key ? (
             <>

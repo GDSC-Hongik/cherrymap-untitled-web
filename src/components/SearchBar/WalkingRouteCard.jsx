@@ -2,19 +2,16 @@
 import styled from "@emotion/styled";
 
 const CardContainer = styled.div`
+  position: fixed;
   display: flex;
   flex-direction: column;
   background: white;
   box-shadow: 0px 0px 9.6px rgba(0, 0, 0, 0.1);
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 10px;
   padding: 16px;
-  width: 100%;
-  height: 329px;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
+  width: 358px;
+  height: 272px;
+  bottom: 3px;
   box-sizing: border-box;
 `;
 
@@ -32,7 +29,7 @@ const Title = styled.span`
 
 const Destination = styled.h2`
   color: #000000;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 600;
 `;
 
@@ -42,7 +39,7 @@ const Duration = styled.span`
 `;
 
 const TimeInfo = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   color: #5F5F5F;
 `;
 
@@ -54,7 +51,8 @@ const DetailsContainer = styled.div`
 
 const PlaceholderBox = styled.div`
   flex: 1;
-  height: 60px;
+  width: 104px;
+  height: 105px;
   background: #D9D9D9;
   border-radius: 10px;
 `;
