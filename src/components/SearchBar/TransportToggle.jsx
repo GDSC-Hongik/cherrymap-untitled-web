@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import styled from "@emotion/styled";
-import WalkIcon from "../../icons/walk-icon.svg";
+import WalkIcon from "../../icons/walk-white.svg";
 import BusIcon from "../../icons/bus-icon.svg";
 
 const ToggleContainer = styled.div`
