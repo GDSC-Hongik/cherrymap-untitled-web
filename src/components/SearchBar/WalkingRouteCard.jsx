@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
+import Bookmark from "./Bookmark";
+
 
 const CardContainer = styled.div`
   position: fixed;
@@ -8,7 +10,6 @@ const CardContainer = styled.div`
   background: white;
   box-shadow: 0px 0px 9.6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  padding: 16px;
   width: 358px;
   height: 272px;
   bottom: 3px;
@@ -16,6 +17,9 @@ const CardContainer = styled.div`
 `;
 
 const Header = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 14px;
   display: flex; 
   align-items: center;
   margin-bottom: 8px;
@@ -28,25 +32,36 @@ const Title = styled.span`
 `;
 
 const Destination = styled.h2`
+  position: absolute;
+  top: 45px;
+  left: 14px;
   color: #000000;
   font-size: 19px;
   font-weight: 600;
 `;
 
 const Duration = styled.span`
+  position: absolute;
+  top: 68px;
+  left: 14px;
   font-size: 30px;
   font-weight: 500;
 `;
 
 const TimeInfo = styled.div`
+  position: absolute;
+  top: 108px;
+  left: 14px;
   font-size: 16px;
   color: #5F5F5F;
 `;
 
 const DetailsContainer = styled.div`
+  position: absolute;
+  top: 141px;
+  left: 14px;
   display: flex;
-  gap: 12px;
-  margin-top: 12px;
+  gap: 9px;
 `;
 
 const PlaceholderBox = styled.div`
@@ -57,19 +72,10 @@ const PlaceholderBox = styled.div`
   border-radius: 10px;
 `;
 
-const HandleBar = styled.div`
-  width: 40px;
-  height: 4px;
-  background: #ccc;
-  border-radius: 2px;
-  align-self: center;
-  margin-bottom: 8px;
-`;
-
 const WalkingRouteCard = ({ destination, duration, arrivalTime, distance }) => {
   return (
     <CardContainer>
-      <HandleBar />
+      <Bookmark />
       <Header>
         <Title>최적경로</Title>
       </Header>
