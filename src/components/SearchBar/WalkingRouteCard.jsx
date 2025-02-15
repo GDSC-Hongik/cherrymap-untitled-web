@@ -28,7 +28,7 @@ const Header = styled.div`
 const Title = styled.span`
   color: #ff2655;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 const Destination = styled.h2`
@@ -48,12 +48,20 @@ const Duration = styled.span`
   font-weight: 500;
 `;
 
-const TimeInfo = styled.div`
+const TimeInfoContainer = styled.div`
   position: absolute;
   top: 108px;
   left: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 19px;
+`;
+
+const TimeInfo = styled.div`
   font-size: 16px;
   color: #5F5F5F;
+  font-weight: 400;
 `;
 
 const DetailsContainer = styled.div`
@@ -62,6 +70,14 @@ const DetailsContainer = styled.div`
   left: 14px;
   display: flex;
   gap: 9px;
+`;
+
+const Divider = styled.div`
+  width: 12px;
+  height: 0px;
+
+  border: 1px solid #757575;
+  transform: rotate(90deg);
 `;
 
 const PlaceholderBox = styled.div`
@@ -81,9 +97,11 @@ const WalkingRouteCard = ({ destination, duration, arrivalTime, distance }) => {
       </Header>
       <Destination>{destination}</Destination>
       <Duration>{duration}</Duration>
-      <TimeInfo>
-        {arrivalTime} 도착 | {distance}
-      </TimeInfo>
+      <TimeInfoContainer>
+        <TimeInfo>{arrivalTime} 도착</TimeInfo>
+        <Divider />
+        <TimeInfo>{distance}</TimeInfo>
+      </TimeInfoContainer>
       <DetailsContainer>
         <PlaceholderBox />
         <PlaceholderBox />
