@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import SearchInput from "./SearchInput";
 import SearchButton from "./SearchButton";
 import ClearButton from "./ClearButton";
-import PTRouteCard from "./PTRouteCard";
 import TransportToggle from "./TransportToggle";
-import WalkingRouteCard from "./WalkingRouteCard";
+import PTRouteCard from "../RouteCard/PTRouteCard";
+import WalkingRouteCard from "../RouteCard/WalkingRouteCard";
 
 const SearchBar = ({ onSearch }) => {
   const [start, setStart] = useState("");
