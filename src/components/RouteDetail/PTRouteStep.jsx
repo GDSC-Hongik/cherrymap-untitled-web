@@ -12,12 +12,10 @@ const PTRouteStep = ({ step, index, totalSteps }) => {
   );
 };
 
-/* 🎨 스타일 */
 const StepWrapper = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 8px 0;
 `;
 
 export default PTRouteStep;
