@@ -3,6 +3,37 @@ import { useState } from "react";
 import styled from "@emotion/styled";
 import WalkIcon from "../../icons/walk-white.svg";
 import BusIcon from "../../icons/bus-icon.svg";
+import { mockWalkingRoute } from "../../mocks/mockWalkingRoute";
+import { mockPTRoute } from "../../mocks/mockPTRoute";
+
+const TransportToggle = ({ selectedTransport, onTransportChange }) => {
+  const transportOptions = {
+    walk: { label: "도보", icon: WalkIcon, time: mockWalkingRoute.duration },
+    bus: { label: "대중교통", icon: BusIcon, time: mockPTRoute.duration },
+  };
+
+  return (
+    <ToggleContainer>
+      {Object.entries(transportOptions).map(([key, { label, icon, time }]) => (
+        <ToggleButton
+          key={key}
+          active={selectedTransport === key}
+          onClick={() => onTransportChange(key)}
+        >
+          {selectedTransport === key ? (
+            <>
+              <img src={icon} alt={label} width="20" />
+              {time}
+            </>
+          ) : (
+            label
+          )}
+        </ToggleButton>
+      ))}
+    </ToggleContainer>
+  );
+};
+
 
 const ToggleContainer = styled.div`
   display: flex;
@@ -34,33 +65,5 @@ const ToggleButton = styled.button`
     margin-right: 10px;
   }
 `;
-
-const TransportToggle = ({ selectedTransport, onTransportChange }) => {
-  const transportOptions = {
-    walk: { label: "도보", icon: WalkIcon, time: "40분" },
-    bus: { label: "대중교통", icon: BusIcon, time: "28분" }
-  };
-
-  return (
-    <ToggleContainer>
-      {Object.entries(transportOptions).map(([key, { label, icon, time }]) => (
-        <ToggleButton
-          key={key}
-          active={selectedTransport === key}
-          onClick={() => onTransportChange(key)}
-        >
-          {selectedTransport === key ? (
-            <>
-              <img src={icon} alt={label} width="20" />
-              {time}
-            </>
-          ) : (
-            label
-          )}
-        </ToggleButton>
-      ))}
-    </ToggleContainer>
-  );
-};
 
 export default TransportToggle;

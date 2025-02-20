@@ -2,6 +2,33 @@
 import styled from "@emotion/styled";
 import Bookmark from "./Bookmark";
 import WalkIconSrc from "../../icons/walk-gray.svg";
+import { mockPTRoute } from "../../mocks/mockPTRoute";
+
+const PTRouteCard = () => {
+  const { duration, arrivalTime, walkTime, fare, routeSteps } = mockPTRoute;
+    return (
+      <CardContainer>
+        <BookmarkWrapper>
+        <Bookmark />
+      </BookmarkWrapper>
+        <Header>
+          <Title>최적경로</Title>
+        </Header>
+        <Duration>{duration}</Duration>
+        <InfoContainer>
+          <Info>{arrivalTime} 도착</Info>
+          <Divider />
+          <Info>도보 {walkTime}</Info>
+          <Divider />
+          <Info>{fare}</Info>
+        </InfoContainer>
+        <RouteBarContainer>
+        <WalkIconStyled src={WalkIconSrc} alt="도보" />
+        </RouteBarContainer>
+      </CardContainer>
+    );
+  };
+
 
 const CardContainer = styled.div`
     position: absolute;
@@ -15,9 +42,14 @@ const CardContainer = styled.div`
     border-radius: 10px; 
 `;
 
+const BookmarkWrapper = styled.div`
+  position: absolute;
+  top: -7px;
+`;
+
 const Header = styled.div`
   position: absolute;
-  top: 20px;
+  top: 14px;
   left: 14px;
   display: flex; 
   align-items: center;
@@ -33,7 +65,7 @@ const Title = styled.span`
 
 const Duration = styled.span`
   position: absolute;
-  top: 68px;
+  top: 39px;
   left: 14px;
   font-size: 30px;
   font-weight: 500;
@@ -52,8 +84,9 @@ const InfoContainer = styled.div`
 
 const Info = styled.div`
   font-size: 16px;
-  color: #5F5F5F;
+  color: #4A4A4A;
   font-weight: 400;
+  line-height: 19px;
 `;
 
 const Divider = styled.div`
@@ -83,27 +116,5 @@ const WalkIconStyled = styled.img`
   height: 12px;
   width: 9px;
 `;
-
-const PTRouteCard = ({ duration, arrivalTime, walkTime, fare }) => {
-  return (
-    <CardContainer>
-      <Bookmark />
-      <Header>
-        <Title>최적경로</Title>
-      </Header>
-      <Duration>{duration}</Duration>
-      <InfoContainer>
-        <Info>{arrivalTime} 도착</Info>
-        <Divider />
-        <Info>도보 {walkTime}</Info>
-        <Divider />
-        <Info>{fare}</Info>
-      </InfoContainer>
-      <RouteBarContainer>
-      <WalkIconStyled src={WalkIconSrc} alt="도보" />
-      </RouteBarContainer>
-    </CardContainer>
-  );
-};
 
 export default PTRouteCard;
