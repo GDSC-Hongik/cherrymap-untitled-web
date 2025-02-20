@@ -9,7 +9,7 @@ import TransportToggle from "./TransportToggle";
 import PTRouteCard from "../RouteCard/PTRouteCard";
 import WalkingRouteCard from "../RouteCard/WalkingRouteCard";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, onTransportChange }) => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [showToggle, setShowToggle] = useState(false);
@@ -54,7 +54,10 @@ const SearchBar = ({ onSearch }) => {
       {showToggle && (
         <TransportToggle
           selectedTransport={selectedTransport}
-          onTransportChange={setSelectedTransport}
+          onTransportChange={(transport) => {
+            setSelectedTransport(transport);
+            onTransportChange(transport);
+          }}
         />
       )}
       {selectedTransport === "bus" && <PTRouteCard />}  
