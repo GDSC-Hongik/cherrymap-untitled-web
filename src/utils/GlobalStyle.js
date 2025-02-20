@@ -14,6 +14,12 @@ const GlobalStyle = css`
 
   body {
     font-family: "Pretendard";
+    width: 390px;
+    height: 844px;
+
+    margin: auto;
+
+    background-color: #ffffff;
   }
 `;
 
