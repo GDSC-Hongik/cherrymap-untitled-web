@@ -21,6 +21,7 @@ const SearchBar = ({ onSearch, onTransportChange }) => {
     setEnd("");
     setShowToggle(false);
     setSelectedTransport("");
+    onTransportChange("");
     navigate(-1);
   };
 
