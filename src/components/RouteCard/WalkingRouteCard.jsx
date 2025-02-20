@@ -1,6 +1,38 @@
 /** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
 import Bookmark from "./Bookmark";
+import { mockWalkingRoute } from "../../mocks/mockWalkingRoute";
+
+const WalkingRouteCard = () => {
+  const { destination, duration, arrivalTime, distance } = mockWalkingRoute;
+
+  return (
+    <CardContainer>
+      <Bookmark />
+      <Header>
+        <Title>최적경로</Title>
+      </Header>
+      <Destination>{destination}</Destination>
+      <Duration>{duration}</Duration>
+      <TimeInfoContainer>
+        <TimeInfo>{arrivalTime} 도착</TimeInfo>
+        <Divider />
+        <TimeInfo>{distance}</TimeInfo>
+      </TimeInfoContainer>
+      <DetailsContainer>
+      <PlaceholderContainer>
+        {placeholders.map((_, index) => (
+          <PlaceholderBox 
+          key={index} 
+          isFirst={index === 0} 
+          isLast={index === placeholders.length - 1} 
+          />
+          ))}
+          </PlaceholderContainer>
+      </DetailsContainer>
+    </CardContainer>
+  );
+};
 
 
 const CardContainer = styled.div`
@@ -29,15 +61,17 @@ const Title = styled.span`
   color: #ff2655;
   font-size: 16px;
   font-weight: 500;
+  line-height: 19px;
 `;
 
-const Destination = styled.h2`
+const Destination = styled.span`
   position: absolute;
   top: 45px;
   left: 14px;
   color: #000000;
   font-size: 19px;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 23px;
 `;
 
 const Duration = styled.span`
@@ -46,6 +80,9 @@ const Duration = styled.span`
   left: 14px;
   font-size: 30px;
   font-weight: 500;
+  line-height: 36px;
+  margin: 0;
+  color: #000000;
 `;
 
 const TimeInfoContainer = styled.div`
@@ -80,35 +117,22 @@ const Divider = styled.div`
   transform: rotate(90deg);
 `;
 
+const PlaceholderContainer = styled.div`
+  display: flex;
+  gap: 9px;
+`;
+
 const PlaceholderBox = styled.div`
   flex: 1;
   width: 104px;
   height: 105px;
-  background: #D9D9D9;
-  border-radius: 10px;
+  background: #d9d9d9;
+  border-radius: ${({ isFirst, isLast }) => 
+    isFirst ? "10px 0 0 10px" : 
+    isLast ? "0 10px 10px 0" : 
+    "0"};
 `;
 
-const WalkingRouteCard = ({ destination, duration, arrivalTime, distance }) => {
-  return (
-    <CardContainer>
-      <Bookmark />
-      <Header>
-        <Title>최적경로</Title>
-      </Header>
-      <Destination>{destination}</Destination>
-      <Duration>{duration}</Duration>
-      <TimeInfoContainer>
-        <TimeInfo>{arrivalTime} 도착</TimeInfo>
-        <Divider />
-        <TimeInfo>{distance}</TimeInfo>
-      </TimeInfoContainer>
-      <DetailsContainer>
-        <PlaceholderBox />
-        <PlaceholderBox />
-        <PlaceholderBox />
-      </DetailsContainer>
-    </CardContainer>
-  );
-};
+const placeholders = [1, 2, 3];
 
 export default WalkingRouteCard;
