@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
 import CircleBadge from "./CircleBadge";
+import DottedLine from "./DottedLine";
 import WalkIcon from "../../icons/walk-gray.svg";
 import StartIcon from "../../icons/start.svg";
 import DestinationIcon from "../../icons/destination.svg";
@@ -34,26 +35,23 @@ const LeftSection = ({ step }) => {
       : null;
 
   return (
-    <>
+    <StepContainer>
       {/* 출발지 */}
       {step.type === "start" && (
-        <StepContainer>
           <Left>
             <StartEndIcon src={StartIcon} alt="출발지" />
           </Left>
-        </StepContainer>
       )}
 
       {/* 일반 경로 (도보, 승차) */}
       {step.type !== "start" && step.type !== "destination" && step.type !== "stop" && (
-  <StepContainer>
     <Left>
       {step.type === "walk" ? (
         <>
         {/* 점선 */}
-          <DashedLine height="31px" />
+          <DottedLine count={5} />
           <WalkIconImg src={WalkIcon} alt="도보" />
-          <DashedLine height="45px" />
+          <DottedLine count={7} />
         </>
       ) : (
         <>
@@ -83,33 +81,35 @@ const LeftSection = ({ step }) => {
         </>
       )}
     </Left>
-  </StepContainer>
 )}
 
 
       {/* 도착지 */}
       {step.type === "destination" && (
-        <StepContainer>
           <Left>
             <StartEndIcon src={DestinationIcon} alt="도착지" />
           </Left>
-        </StepContainer>
       )}
-    </>
+    </StepContainer>
   );
 };
 
 
 const StepContainer = styled.div`
   display: flex;
-  align-items: flex-start;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
 `;
 
 const Left = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
-  min-width: 60px;
+  justify-content: center;
 `;
 
 const WalkIconImg = styled.img`
@@ -127,13 +127,5 @@ const VerticalLine = styled.div`
   height: ${({ height }) => height || "50px"};
   background: ${({ color }) => color || "#d9d9d9"};
 `;
-
-const DashedLine = styled.div`
-  width: 3px;
-  height: ${({ height }) => height || "10px"};
-  border-left: 2px dashed #d9d9d9;
-  margin: 4px 0;
-`;
-
 
 export default LeftSection;

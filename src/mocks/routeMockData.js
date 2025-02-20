@@ -8,10 +8,17 @@ export const mockRouteSteps = [
     description: "7분 | 4개 역 이동",
     exitStation: "마포역"
   },
-  { type: "walk", title: "마포역 정류장까지 걷기", description: "12분 | 109m 이동" },
+  {
+    type: "walk",
+    title: "마포역 정류장까지 걷기",
+    exit: "1번", 
+    description: "2분  109m 이동"
+  },
   { 
     type: "bus", 
-    title: "7013A 버스 승차", 
+    title: "마포역 정류장(100201) 승차", 
+    line: "7013A",
+    lineType: "지선",
     description: "12분 | 7개 정류장 이동",
     exitStation: "서강초등학교 정류장"
   },
