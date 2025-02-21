@@ -7,7 +7,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<OnboardingPage></OnboardingPage>}></Route>
-      <Route path="/:providerId/" element={<Home></Home>}></Route>
+      <Route path="/:providerId/home" element={<Home></Home>}></Route>
     </Routes>
   );
 }

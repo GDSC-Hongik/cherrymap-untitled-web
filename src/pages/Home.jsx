@@ -9,11 +9,9 @@ const Home = () => {
   const providerId = useParams().providerId;
 
   useEffect(() => {
-    async function getUser(providerId) {
-      const data = await MemberAPI.GET_USER_INFO({ providerId: providerId });
-      setUserData(data);
-    }
-    getUser(Number(providerId));
+    MemberAPI.GET_USER_INFO({ providerId: providerId }).then((res) =>
+      setUserData(res)
+    );
   }, [providerId]);
 
   return (
